@@ -49,6 +49,27 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name:'authorization',
+      title:'Authorization',
+      type:'string',
+      options:{
+        layout: "radio",
+        list: [
+          { title: 'Authorized', value: 'Authorized'},
+          { title: 'Unauthorized', value: 'Unauthorized'},
+          { title: 'Both', value: 'Both'},
+        ]
+      }
+    }),
+    defineField({
+      name:'timeToRead',
+      title:'Time to read',
+      type:'number',
+      description:'Duration (in minutes) to go through the blog',
+      validation: Rule => {
+        return Rule.required().min(1).max(10)},
+    }),
   ],
 
   preview: {
